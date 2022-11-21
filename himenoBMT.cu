@@ -181,7 +181,7 @@ jacobi_sub(float (*wrk2)[MJMAX - 1][MKMAX + 31],
     int tidj = tidij % (BLOCKJ + 2);
     int i = blockIdx.y * BLOCKI + tidi - 1;
     int j = blockIdx.x * BLOCKJ + tidj - 1;
-    if (j >= 0 && j < MJMAX - 1) {
+    if (i >= 0 && j >= 0 && j < MJMAX - 1) {
       const float (*pp)[MKMAX + 31];
       if (HAS_PREV && i < 0) {
         pp = pprev;
@@ -203,7 +203,7 @@ jacobi_sub(float (*wrk2)[MJMAX - 1][MKMAX + 31],
       int tidj = tidij % (BLOCKJ + 2);
       int i = blockIdx.y * BLOCKI + tidi - 1;
       int j = blockIdx.x * BLOCKJ + tidj - 1;
-      if (j >= 0 && j < MJMAX - 1) {
+      if (i >= 0 && j >= 0 && j < MJMAX - 1) {
         const float (*pp)[MKMAX + 31];
         if (HAS_PREV && i < 0) {
           pp = pprev;
